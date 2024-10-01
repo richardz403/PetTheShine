@@ -1,0 +1,54 @@
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    position: relative;
+}
+
+.container {
+    text-align: center;
+    z-index: 10; /* Ensures the main cookie is on top */
+}
+
+#cookie {
+    width: 300px;
+    padding-top: 40px;
+    cursor: url(https://media.tenor.com/wR6Vwn6QVRUAAAAi/headpat-hand.gif),  auto;
+    transition: transform 0.1s ease;
+}
+
+.vibrate {
+    animation: vibrate 0.3s;
+}
+
+@keyframes vibrate {
+    0% { transform: translate(0px, 0px); }
+    25% { transform: translate(2px, -2px); }
+    50% { transform: translate(-2px, 2px); }
+    75% { transform: translate(2px, 2px); }
+    100% { transform: translate(-2px, -2px); }
+}
+
+.falling-cookie {
+    position: absolute;
+    width: 50px;
+    animation: fall linear;
+    pointer-events: none; /* Prevent interaction with falling cookies */
+}
+
+@keyframes fall {
+    0% {
+        top: -100px;
+        opacity: 1;
+    }
+    100% {
+        top: 100vh;
+        opacity: 0;
+    }
+}
