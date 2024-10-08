@@ -38,7 +38,7 @@ cookie.addEventListener('click', () => {
 // Function to create a falling cookie
 function createFallingCookie() {
     const fallingCookie = document.createElement('img');
-    fallingCookie.src = 'unshine.jpg';
+    fallingCookie.src = 'loveshine.webp';
     fallingCookie.classList.add('falling-cookie');
     
     const randomX = Math.random() * window.innerWidth;
@@ -78,16 +78,26 @@ buyWorkerButton.addEventListener('click', () => {
             let workerClicks = doubleClickActive ? workers.length * 2 : workers.length;
             counter += workerClicks;
             counterDisplay.textContent = counter;
-        }, 1000);
-    }
+
+            cookie.classList.add('vibrate');
+    setTimeout(() => {
+        cookie.classList.remove('vibrate');
+    }, 300);
+
+            worker.classList.add('vibrate');
+            setTimeout(() => {
+                worker.classList.remove('vibrate');
+            }, 300);
+
+            createFallingCookie();
+                }, 1000);
+            }
 });
 
 // Function to create the golden cookie
 function createGoldenCookie() {
     const goldenCookie = document.createElement('img');
     goldenCookie.src = 'shine.webp'; // Replace with your golden image
-
-    goldenCookie.width = '100px';
     goldenCookie.classList.add('golden-cookie');
 
     const randomX = Math.random() * window.innerWidth;
@@ -97,13 +107,18 @@ function createGoldenCookie() {
 
     body.appendChild(goldenCookie);
 
-    // Click event for the golden cookie
+    // Click event for the golden cookie (fade-out and double clicks activation)
     goldenCookie.addEventListener('click', () => {
-        goldenCookie.remove();
-        activateDoubleClicks();
+        goldenCookie.style.animation = 'fadeOut 1s forwards'; // Trigger fade-out animation
+
+        setTimeout(() => {
+            goldenCookie.remove();
+        }, 1000); // Remove after fade-out
+
+        activateDoubleClicks(); // Activate double clicks
     });
 
-    // Remove the golden cookie after 10 seconds
+    // Remove the golden cookie after 10 seconds if not clicked
     setTimeout(() => {
         goldenCookie.remove();
     }, 10000);
@@ -125,3 +140,4 @@ function activateDoubleClicks() {
 setInterval(() => {
     createGoldenCookie();
 }, 15000);
+

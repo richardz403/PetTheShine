@@ -4,7 +4,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Merriweather';font-size: 22px;
     background-color: #f0f0f0;
     overflow: hidden; /* Prevents scrollbars */
     position: relative;
@@ -57,4 +57,24 @@ body {
     width: 100px;
     cursor: pointer;
     z-index: 20; /* Ensure it is on top of other elements */
+    animation: spin 5s infinite linear; /* Make the golden cookie spin */
+    transition: opacity 1s ease; /* For smooth fading */
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }
